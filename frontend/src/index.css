@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "tomarik";
+    src: url("./assets/fonts/tomarik-display-line.ttf");
+}
+  
+body{
+    margin:0;
+    background-color: #d9ed92;
+}
+
+.title-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.title{
+    background-color: #b5e48c;
+    font-size: 100px;
+    margin-top: 4vh;
+    border-radius: 8px;
+    font-family: "tomarik";
+    box-shadow: -4px 4px 0px #99d98c;
+}
+  
+  
