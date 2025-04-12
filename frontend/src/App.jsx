@@ -1,4 +1,5 @@
 import Title from './components/Title'
+import Dashboard from './components/Dashboard'
 import './App.css'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <Title />
+      <Dashboard />
     </>
   )
 }

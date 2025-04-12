@@ -5,21 +5,88 @@
   
 body{
     margin:0;
-    background-color: #d9ed92;
+    background-color: #E0EEC6;
+    font-family: "tomarik";
 }
 
 .title-wrapper{
+    height:25vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .title{
     background-color: #b5e48c;
     font-size: 100px;
-    margin-top: 4vh;
-    border-radius: 8px;
-    font-family: "tomarik";
+    border-radius: 1.5vh;
     box-shadow: -4px 4px 0px #99d98c;
 }
   
-  
+.dashboard-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:65vh;
+    margin-bottom:10vh;
+}
+
+.dashboard{
+    width: 50vw;
+    height: 55vh;
+    background-color: #b5e48c;
+    border-radius: 1.5vh;
+    box-shadow: -4px 4px 0px #99d98c;;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 1vh;
+}
+
+.dashboard-main{
+    background-color: #76c893;
+    height: 22vh;
+    width: 100%;
+    border-radius:1.5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-main-today-wrapper{
+    display: flex;
+    width: 95%;
+    height: 35%;    
+    border-bottom: 1px solid #52B69A;
+    padding: 1vw;
+}
+
+.dashboard-main-day{
+    height: 70%;
+    font-size: 5vh;
+}
+
+.dashboard-main-time{
+    height: 30%;
+    font-size: 2vh;
+}
+
+.dashboard-main-day-icon{
+    width: 8vw;
+    font-size: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-main-today-container{
+    flex-grow: 1;
+}
+
+.dashboard-main-options{
+    width: 95%;
+    height: 35%;
+    padding: 1vw;
+}
