@@ -1,12 +1,17 @@
 @font-face {
-    font-family: "tomarik";
+    font-family: "tomarik-display-line";
     src: url("./assets/fonts/tomarik-display-line.ttf");
+}
+@font-face {
+    font-family: "tomarik-display";
+    src: url("./assets/fonts/tomarik-display.ttf");
 }
   
 body{
     margin:0;
     background-color: #E0EEC6;
-    font-family: "tomarik";
+    font-family: "tomarik-display";
+    
 }
 
 .title-wrapper{
@@ -21,6 +26,7 @@ body{
     font-size: 100px;
     border-radius: 1.5vh;
     box-shadow: -4px 4px 0px #99d98c;
+    font-family: "tomarik-display-line";
 }
   
 .dashboard-wrapper{
@@ -65,10 +71,10 @@ body{
 
 .dashboard-main-day{
     height: 70%;
-    font-size: 5vh;
+    font-size: 3vh;
 }
 
-.dashboard-main-time{
+.dashboard-main-date{
     height: 30%;
     font-size: 2vh;
 }
@@ -89,4 +95,42 @@ body{
     width: 95%;
     height: 35%;
     padding: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-main-options-due{
+    font-size: 2vh;
+    flex-grow: 15;
+}
+
+.dashboard-main-options-new{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.dashboard-main-options-new > button{
+    background-color: #52b69a;
+    border:0;
+    padding:1vh 2vh;
+    border-radius: 4px;
+    font-size: 2vh;
+    font-family: "tomarik-display";
+}
+
+.dashboard-main-options-filter{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.dashboard-main-options-filter > select{
+    background-color: #52b69a;
+    border:0;
+    padding:1vh 1.5vh;
+    border-radius: 4px;
+    font-size: 2vh;
+    font-family: "tomarik-display";
 }
