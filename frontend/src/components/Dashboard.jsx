@@ -1,3 +1,5 @@
+import Task from "./Task"
+
 function Dashboard(){
 
     const date=new Date()
@@ -40,11 +42,13 @@ function Dashboard(){
                             </div>
                         </div>
                     </div>
+                    <div className="tasks-wrapper">
+                        <Task />
+                        <Task />
+                        <Task />
+                        <Task />
+                    </div>
                 </div>
-            </div>
-
-            <div className="tasks-wrapper">
-
             </div>
 
         </>
