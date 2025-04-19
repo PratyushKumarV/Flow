@@ -43,7 +43,7 @@ function Dashboard(){
                         </div>
                     </div>
                     <div className="tasks-wrapper">
-                        <Task />
+                        <Task name="Interview" description="@ Google" time="10:20 am to 11:20 am"/>
                         <Task />
                         <Task />
                         <Task />

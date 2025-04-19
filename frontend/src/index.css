@@ -146,6 +146,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index:0;
 }
 
 .task-entry{
@@ -155,4 +156,51 @@ body{
     border-radius: 1vh;
     flex-shrink: 0;
     margin-bottom: 1vh;
+    padding: 1.5vh 1vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.task-info-wrapper{
+    display: flex;
+}
+
+.task-info{
+    flex-grow: 1;
+}
+
+.task-name{
+    font-size: 2.5vh;
+}
+
+.task-description{
+    margin-top: 1vh;
+    font-size: 1.7vh;
+}
+
+.task-options > button{
+    background-color: #34a0a4;
+    border:0;
+    font-size: 20px;
+}
+
+.task-options > button:hover{
+    cursor: pointer;
+}
+
+.task-due{
+    font-size: 1.7vh;
+}
+
+.task-due > img{
+    width:2vh;
+    float:left;
+}
+
+.task-due > span{
+    display: inline-block;
+    margin-left: 1vh;
+    margin-top: 0.3vh;
 }
