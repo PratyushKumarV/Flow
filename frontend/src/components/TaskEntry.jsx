@@ -1,17 +1,19 @@
 import time from "../assets/images/time-968.png"
 import trash from "../assets/images/trash-can.png"
 
-function Task(props){
+function TaskEntry(props){
+    
+    const dueDate=new Date(props.dueDate)
 
     return (
         <div className="task-entry">
             <div className="task-info-wrapper">
                 <div className="task-info">
                     <div className="task-name">
-                        {props.name}
+                        {props.taskName}
                     </div>
                     <div className="task-description">
-                        {props.description}
+                        {props.taskDescription}
                     </div>
                 </div>
                 <div className="task-options">
@@ -23,10 +25,10 @@ function Task(props){
                 </div>
             </div>
             <div className="task-due">
-                <img src={time}/><span>Today, {props.time}</span>
+                <img src={time}/><span>{dueDate.toLocaleDateString('en-IN')}, {props.dueTime}</span>
             </div>
         </div>
     )
 }
 
-export default Task;
+export default TaskEntry    ;

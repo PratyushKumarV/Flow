@@ -11,8 +11,13 @@ async function addTask(req, res){
     }
 }
 
-async function deleteTask(req, res){
-
+async function getTask(req, res){
+    try{
+        const tasks=await Task.find({})
+        res.status(200).json(tasks)
+    }catch(err){
+        throw new Error(err.message)
+    }
 }
 
-module.exports={addTask, deleteTask}
+module.exports={addTask, getTask}

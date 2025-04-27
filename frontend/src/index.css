@@ -306,16 +306,21 @@ body{
     border: none;
 }
 
-.task-form > button{
+.form-buttons > button{
     font-family: "tomarik-display";
     font-size: 2.5vh;
     padding: 1vh 4vh;
     border-radius: 8px;
     background-color: #52b69a;
     border: none;
+    margin: 0vh 1vh 0vh;
 }
 
-.task-form > button:hover{
+.form-buttons #submit:hover{
     background-color: #34a0a4;
     cursor: pointer;
+}
+
+.form-buttons #cancel:hover{
+    background-color: rgb(239, 91, 91);
 }

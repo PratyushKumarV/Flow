@@ -1,12 +1,26 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import TaskEntry from "./TaskEntry"
 import Title from "./Title"
 import TaskForm from "./TaskForm"
 import FormContext from "../context/FormContext"
+import axios from "axios"
 
 function Dashboard(){
 
     const [showForm, setShowForm]=useState(false)
+    const [tasks, setTasks]=useState([])
+
+    async function fetchTasks(){ //function for useEffect
+        const response=await axios.get("http://localhost:5000/api/tasks")
+        let taskData=response.data
+        setTasks(taskData.map(({taskName, taskDescription, dueDate, dueTime, status})=>{
+            return <TaskEntry taskName={taskName} taskDescription={taskDescription} dueDate={dueDate} dueTime={dueTime} status={status} />
+        }))
+    }
+
+    useEffect(()=>{
+        fetchTasks()
+    }, [showForm])
 
     const date=new Date()
     const emojiList=['🌄', '🌅', '🌤️', '⛅', '🌞', '🌟', '☀️']
@@ -53,10 +67,7 @@ function Dashboard(){
                             </div>
                         </div>
                         <div className="tasks-wrapper">
-                            <TaskEntry name="Interview" description="@ Google" time="10:20 am to 11:20 am"/>
-                            <TaskEntry />
-                            <TaskEntry />
-                            <TaskEntry />
+                            {tasks}
                         </div>
                     </div>
                 </div>

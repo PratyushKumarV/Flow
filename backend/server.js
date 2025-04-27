@@ -1,4 +1,5 @@
 const express=require("express")
+const cors=require("cors")
 require("dotenv").config()
 
 const connectDB=require("./config/db")
@@ -6,6 +7,12 @@ const blogRoute=require("./routes/tasks")
 
 const PORT=process.env.PORT
 const app=express()
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"]
+}))
 
 app.use("/api/tasks", blogRoute)
 
