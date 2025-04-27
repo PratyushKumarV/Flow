@@ -4,6 +4,6 @@ const taskController=require("../controllers/taskController")
 
 router.use(express.json()) //express.json is a global middleware
 
-router.post('/', taskController) // taskController is actually the addTask function
+router.post('/', taskController.addTask) 
 
 module.exports=router

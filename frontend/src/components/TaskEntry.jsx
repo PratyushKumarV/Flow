@@ -1,6 +1,8 @@
 import time from "../assets/images/time-968.png"
+import trash from "../assets/images/trash-can.png"
 
 function Task(props){
+
     return (
         <div className="task-entry">
             <div className="task-info-wrapper">
@@ -13,7 +15,11 @@ function Task(props){
                     </div>
                 </div>
                 <div className="task-options">
-                    <button>...</button>
+                    <button id="completed">Done</button>
+                    <button id="edit">Edit</button>
+                    <button id="delete">
+                        <img src={trash} className="delete-task"/>
+                    </button>
                 </div>
             </div>
             <div className="task-due">
