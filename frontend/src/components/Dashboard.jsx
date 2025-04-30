@@ -9,13 +9,15 @@ function Dashboard(){
     const [showForm, setShowForm]=useState(false)
     const [tasks, setTasks]=useState([])
     const [refresh, setRefresh]=useState(false)
+    const [update, setUpdate]=useState(null) //update state will store the task entry details which is drilled as props to showForm
 
     async function fetchTasks(){ //function for useEffect
         try{
             const response=await axios.get("http://localhost:5000/api/tasks")
             let taskData=response.data
-            setTasks(taskData.map(({_id, taskName, taskDescription, dueDate, dueTime, status})=>{
-                return  status=="Pending" &&  <TaskEntry key={_id} id={_id} taskName={taskName} taskDescription={taskDescription} dueDate={dueDate} dueTime={dueTime} status={status} refresh={refresh} setRefresh={setRefresh} /> 
+            setTasks(taskData.map((entry)=>{
+                return  entry.status=="Pending" &&  
+                <TaskEntry key={entry._id} {...entry} refresh={refresh} setRefresh={setRefresh} setUpdate={setUpdate} setShowForm={setShowForm}/> 
             }))
         }catch(err){
             throw new Error(err.message)
@@ -33,7 +35,7 @@ function Dashboard(){
     return (
 
         <>
-                {showForm ? <TaskForm showForm={showForm} setShowForm={setShowForm}/> : null}
+                {showForm ? <TaskForm setShowForm={setShowForm} update={update} setUpdate={setUpdate}/> : null}
                 <Title />
                 <div className="dashboard-wrapper">
                     <div className="dashboard">
@@ -58,7 +60,7 @@ function Dashboard(){
                                     #4 Tasks due today
                                 </div>
                                 <div className="dashboard-main-options-new">
-                                    <button id="new-task" onClick={()=>setShowForm(!showForm)}>
+                                    <button id="new-task" onClick={()=>setShowForm(true)}>
                                         New +
                                     </button>
                                 </div>

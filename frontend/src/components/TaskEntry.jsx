@@ -7,10 +7,12 @@ function TaskEntry(props){
     const dueDate=new Date(props.dueDate)
     const refresh=props.refresh
     const setRefresh=props.setRefresh
+    const setUpdate=props.setUpdate
+    const setShowForm=props.setShowForm
 
     async function deleteTask(){
         try{
-            const response=await axios.delete(`http://localhost:5000/api/tasks/${props.id}`)
+            const response=await axios.delete(`http://localhost:5000/api/tasks/${props._id}`)
             console.log(response.data.message)
             setRefresh(!refresh)
         }catch(err){
@@ -20,9 +22,18 @@ function TaskEntry(props){
 
     async function finishTask(){
         try{
-            const response=await axios.patch(`http://localhost:5000/api/tasks/${props.id}`)
+            const response=await axios.patch(`http://localhost:5000/api/tasks/${props._id}`)
             console.log(response.data.message)
             setRefresh(!refresh)
+        }catch(err){
+            throw new Error(err.message)
+        }
+    }
+
+    async function editTask(){
+        try{
+            setUpdate(props)
+            setShowForm(true)
         }catch(err){
             throw new Error(err.message)
         }
@@ -41,7 +52,7 @@ function TaskEntry(props){
                 </div>
                 <div className="task-options">
                     <button id="completed" onClick={finishTask}>Done</button>
-                    <button id="edit">Edit</button>
+                    <button id="edit" onClick={editTask}>Edit</button>
                     <button id="delete" onClick={deleteTask}>
                         <img src={trash} className="delete-task"/>
                     </button>
@@ -54,4 +65,4 @@ function TaskEntry(props){
     )
 }
 
-export default TaskEntry    ;
+export default TaskEntry;

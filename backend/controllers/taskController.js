@@ -42,4 +42,15 @@ async function updateStatus(req, res){
     }
 }
 
-module.exports={addTask, getTask, deleteTask, updateStatus}
+async function updateTask(req, res){
+    try{
+        const {id}=req.params
+        const filter={_id:id}
+        const doc=await Task.findOneAndUpdate(filter, req.body, {new : true, upsert : true})
+        res.status(200).json({message: "Task updated", data:doc})
+    }catch(err){
+        throw new Error(err.message)
+    }
+}
+
+module.exports={addTask, getTask, deleteTask, updateStatus, updateTask}

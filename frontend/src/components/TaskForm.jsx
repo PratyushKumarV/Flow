@@ -1,7 +1,8 @@
 import axios from "axios"
 
-function TaskForm({showForm, setShowForm}){
+function TaskForm(props){
 
+    const {setShowForm, update, setUpdate}=props
 
     async function submitTask(formData){
         const taskName=formData.get("taskName")
@@ -17,13 +18,20 @@ function TaskForm({showForm, setShowForm}){
         }
 
         try{
-            await axios.post("http://localhost:5000/api/tasks", task)
-            console.log("Task added successfully")
+            if(!update){
+                const response=await axios.post("http://localhost:5000/api/tasks", task)
+                console.log(response.data.message)
+            }else{
+                const response=await axios.put(`http://localhost:5000/api/tasks/${update._id}`, task)
+                console.log(response.data.message)
+                setUpdate(null)
+            }
+            
         }catch(err){
             throw new Error(err.message)
         }
         
-        setShowForm(!showForm)
+        setShowForm(false)
     }
 
     return (
@@ -37,22 +45,22 @@ function TaskForm({showForm, setShowForm}){
                     <form className="task-form" action={submitTask}>
                         <div  className="form-row">
                             <label htmlFor="task">Task Name</label>
-                            <input id="task" name="taskName" type="text" required/>  
+                            <input id="task" name="taskName" type="text" required defaultValue={update ? update.taskName : null}/>  
                         </div>
                         <div className="form-row">
                             <label htmlFor="description">Task Description</label>
-                            <input id="description" name="taskDescription" type="text" required/>  
+                            <input id="description" name="taskDescription" type="text" required defaultValue={update ? update.taskDescription : null}/>  
                         </div>
                         <div className="form-row">
                             <label htmlFor="due-date">Due Date</label>
-                            <input id="due-date" name="dueDate" type="date" required />
+                            <input id="due-date" name="dueDate" type="date" required defaultValue={update ? new Date(update.dueDate).toISOString().split('T')[0]  : null} />
                         </div>
                         <div className="form-row">
                             <label htmlFor="due-time">Due Time</label>
-                            <input id="due-time" name="dueTime" type="time" required/>
+                            <input id="due-time" name="dueTime" type="time" required defaultValue={update ? update.dueTime : null}/>
                         </div>
                         <div className="form-buttons">
-                            <button id="cancel" onClick={()=>setShowForm(!showForm)}>Cancel</button>
+                            <button id="cancel" onClick={()=>setShowForm(false)}>Cancel</button>
                             <button id="submit" type="submit">Save</button>
                         </div>
                     </form>
