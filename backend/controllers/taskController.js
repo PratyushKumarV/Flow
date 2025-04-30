@@ -30,4 +30,16 @@ async function deleteTask(req, res){
     }
 }
 
-module.exports={addTask, getTask, deleteTask}
+async function updateStatus(req, res){
+    try{
+        const {id}=req.params
+        const filter={ _id:id }
+        const update={ status:"Completed" }
+        const doc=await Task.findOneAndUpdate(filter, update, {new : true}) // new parameter returns the document after updation
+        res.status(200).json({message: "Task finished", data:doc})
+    }catch(err){
+        throw new Error(err.message)
+    }
+}
+
+module.exports={addTask, getTask, deleteTask, updateStatus}

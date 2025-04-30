@@ -18,6 +18,16 @@ function TaskEntry(props){
         }
     }
 
+    async function finishTask(){
+        try{
+            const response=await axios.patch(`http://localhost:5000/api/tasks/${props.id}`)
+            console.log(response.data.message)
+            setRefresh(!refresh)
+        }catch(err){
+            throw new Error(err.message)
+        }
+    }
+
     return (
         <div className="task-entry">
             <div className="task-info-wrapper">
@@ -30,7 +40,7 @@ function TaskEntry(props){
                     </div>
                 </div>
                 <div className="task-options">
-                    <button id="completed">Done</button>
+                    <button id="completed" onClick={finishTask}>Done</button>
                     <button id="edit">Edit</button>
                     <button id="delete" onClick={deleteTask}>
                         <img src={trash} className="delete-task"/>

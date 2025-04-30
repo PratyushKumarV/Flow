@@ -15,7 +15,7 @@ function Dashboard(){
             const response=await axios.get("http://localhost:5000/api/tasks")
             let taskData=response.data
             setTasks(taskData.map(({_id, taskName, taskDescription, dueDate, dueTime, status})=>{
-                return status=="Pending" && <TaskEntry key={_id} id={_id} taskName={taskName} taskDescription={taskDescription} dueDate={dueDate} dueTime={dueTime} status={status} refresh={refresh} setRefresh={setRefresh} /> //only pending tasks are displayed
+                return  status=="Pending" &&  <TaskEntry key={_id} id={_id} taskName={taskName} taskDescription={taskDescription} dueDate={dueDate} dueTime={dueTime} status={status} refresh={refresh} setRefresh={setRefresh} /> 
             }))
         }catch(err){
             throw new Error(err.message)
