@@ -1,9 +1,22 @@
 import time from "../assets/images/time-968.png"
 import trash from "../assets/images/trash-can.png"
+import axios from "axios"
 
 function TaskEntry(props){
     
     const dueDate=new Date(props.dueDate)
+    const refresh=props.refresh
+    const setRefresh=props.setRefresh
+
+    async function deleteTask(){
+        try{
+            const response=await axios.delete(`http://localhost:5000/api/tasks/${props.id}`)
+            console.log(response.data.message)
+            setRefresh(!refresh)
+        }catch(err){
+            throw new Error(err.message)
+        }
+    }
 
     return (
         <div className="task-entry">
@@ -19,7 +32,7 @@ function TaskEntry(props){
                 <div className="task-options">
                     <button id="completed">Done</button>
                     <button id="edit">Edit</button>
-                    <button id="delete">
+                    <button id="delete" onClick={deleteTask}>
                         <img src={trash} className="delete-task"/>
                     </button>
                 </div>

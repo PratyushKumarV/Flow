@@ -1,10 +1,7 @@
-import { useContext } from "react"
-import FormContext from "../context/FormContext"
 import axios from "axios"
 
-function TaskForm(){
+function TaskForm({showForm, setShowForm}){
 
-    const {showForm, setShowForm}=useContext(FormContext)
 
     async function submitTask(formData){
         const taskName=formData.get("taskName")

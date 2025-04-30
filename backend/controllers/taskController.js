@@ -20,4 +20,14 @@ async function getTask(req, res){
     }
 }
 
-module.exports={addTask, getTask}
+async function deleteTask(req, res){
+    try{
+        const {id}=req.params
+        const result=await Task.deleteOne({_id:id})
+        res.status(200).json({message: "Task deleted successfully", data:result})
+    }catch(err){
+        throw new Error(err.message)
+    }
+}
+
+module.exports={addTask, getTask, deleteTask}

@@ -6,5 +6,6 @@ router.use(express.json()) //express.json is a global middleware
 
 router.post('/', taskController.addTask) 
 router.get('/', taskController.getTask)
+router.delete('/:id', taskController.deleteTask)
 
 module.exports=router
