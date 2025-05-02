@@ -43,9 +43,6 @@ function TaskEntry(props){
                     <div className="task-name">
                         {props.status=="Completed"?<del>{props.taskName}</del>:props.taskName}
                     </div>
-                    <div className="task-description">
-                        {props.status=="Completed"?<del>{props.taskDescription}</del>:props.taskDescription}
-                    </div>
                 </div>
                 <div className="task-options">
                     {props.status=="Completed"?<button onClick={()=>updateStatus("Pending")}>Mark as Pending</button>:<button id="completed" onClick={()=>updateStatus("Completed")}>Done</button>}
@@ -54,6 +51,9 @@ function TaskEntry(props){
                         <img src={trash} className="delete-task"/>
                     </button>
                 </div>
+            </div>
+            <div className="task-description">
+                {props.status=="Completed"?<del>{props.taskDescription}</del>:props.taskDescription}
             </div>
             <div className="task-due">
                 <img src={time}/><span>{dueDate.toLocaleDateString('en-IN')}, {props.dueTime}</span>
