@@ -19,7 +19,7 @@ function Dashboard(){
 
     async function fetchTasks(){ //function for useEffect
         try{
-            const response=await axios.get("http://localhost:5000/api/tasks")
+            const response=await axios.get("https://flow-kn3b.onrender.com/api/tasks")
             let taskData=response.data
             setTasks(
                 taskData.filter((entry)=>{

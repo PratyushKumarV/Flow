@@ -9,7 +9,7 @@ const PORT=process.env.PORT
 const app=express()
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173","https://flow-kn3b.onrender.com"],
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"]
 }))
