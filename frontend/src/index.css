@@ -11,7 +11,6 @@ body{
     margin:0;
     background-color: #E0EEC6;
     font-family: "tomarik-display";
-    
 }
 
 .title-wrapper{
@@ -323,4 +322,96 @@ body{
 
 .form-buttons #cancel:hover{
     background-color: rgb(239, 91, 91);
+}
+
+/* responsive web design */
+
+@media only screen and (max-width: 1024px){
+    .dashboard{
+        width: 85vw
+    }
+    .task-form-container{
+        width:85%
+    }
+    .task-options .delete-task{
+        width: 1vh;
+    }
+    .task-options > button{
+        font-size: 2vh;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .title{
+        font-size: 10vh;
+    }
+    .dashboard-main-day{
+        font-size: 2.5vh;
+        height: 50%
+    }
+    .dashboard-main-date{
+        height: 50%;
+        font-size: 1.5vh
+    }
+    .dashboard-main-day-icon{
+        font-size: 5vh;
+        flex-grow: 1;
+        margin-bottom: 2vh;
+    }
+    .dashboard-main-today-container{
+        flex-grow: 14;
+    }
+    .dashboard-main-options-due{
+        font-size: 1.5vh;
+        flex-grow: 10;
+    }
+    .dashboard-main-options-new{
+        flex-grow: 1;
+    }
+    .dashboard-main-options-filter{
+        flex-grow: 1;
+    }
+    .dashboard-main-options-new > button{
+        font-size: 1.5vh;
+        white-space: nowrap;
+        padding: 0.5vh 1vh;
+        margin-left: 0.5vh;
+    }
+    .dashboard-main-options-filter > select{
+        font-size: 1.5vh;
+        padding: 0.5vh 1vh;
+        margin-left: 0.2vh;
+    }
+    .task-entry{
+        padding: 2vh 2vw
+    }
+    .task-name{
+        font-size: 2vh;
+    }
+    .task-description{
+        font-size: 1.5vh;
+    }
+    .task-options > button{
+        font-size: 1.5vh;
+        margin-left: 0.2vh
+    }
+    .task-due{
+        font-size: 1.5vh;
+    }
+    .task-form{
+        width: 85%
+    }
+    .form-row > label{
+        font-size: 2vh;
+        width: 42.5%;
+        padding: 0.8vh 1.6vh
+    }
+    .form-row > input{
+        width: 42.5%;
+    }
+    .form-buttons > button{
+        font-size: 2vh;
+        padding: 0.8vh 1.6vh;
+        margin: 0vh 0.5vh 0vh;
+    }
 }
