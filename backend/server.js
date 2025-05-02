@@ -9,7 +9,7 @@ const PORT=process.env.PORT
 const app=express()
 
 app.use(cors({
-    origin: ["http://localhost:5173","https://flow-three-black.vercel.app"],
+    origin: ["http://localhost:5173","https://flow-three-black.vercel.app", "https://flow-pratyushkumarvs-projects.vercel.app/"],
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"]
 }))
