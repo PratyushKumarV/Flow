@@ -32,11 +32,11 @@ async function deleteTask(req, res){
 
 async function updateStatus(req, res){
     try{
-        const {id}=req.params
+        const {id, status}=req.query
         const filter={ _id:id }
-        const update={ status:"Completed" }
+        const update={ status: status }
         const doc=await Task.findOneAndUpdate(filter, update, {new : true}) // new parameter returns the document after updation
-        res.status(200).json({message: "Task finished", data:doc})
+        res.status(200).json({message: "Task status changed", data:doc})
     }catch(err){
         throw new Error(err.message)
     }

@@ -5,10 +5,7 @@ import axios from "axios"
 function TaskEntry(props){
     
     const dueDate=new Date(props.dueDate)
-    const refresh=props.refresh
-    const setRefresh=props.setRefresh
-    const setUpdate=props.setUpdate
-    const setShowForm=props.setShowForm
+    const {refresh, setRefresh, setUpdate, setShowForm}=props
 
     async function deleteTask(){
         try{
@@ -20,9 +17,9 @@ function TaskEntry(props){
         }
     }
 
-    async function finishTask(){
+    async function updateStatus(status){
         try{
-            const response=await axios.patch(`http://localhost:5000/api/tasks/${props._id}`)
+            const response=await axios.patch(`http://localhost:5000/api/tasks/query?id=${props._id}&status=${status}`)
             console.log(response.data.message)
             setRefresh(!refresh)
         }catch(err){
@@ -44,15 +41,15 @@ function TaskEntry(props){
             <div className="task-info-wrapper">
                 <div className="task-info">
                     <div className="task-name">
-                        {props.taskName}
+                        {props.status=="Completed"?<del>{props.taskName}</del>:props.taskName}
                     </div>
                     <div className="task-description">
-                        {props.taskDescription}
+                        {props.status=="Completed"?<del>{props.taskDescription}</del>:props.taskDescription}
                     </div>
                 </div>
                 <div className="task-options">
-                    <button id="completed" onClick={finishTask}>Done</button>
-                    <button id="edit" onClick={editTask}>Edit</button>
+                    {props.status=="Completed"?<button onClick={()=>updateStatus("Pending")}>Mark as Pending</button>:<button id="completed" onClick={()=>updateStatus("Completed")}>Done</button>}
+                    {props.status=="Completed"?null:<button id="edit" onClick={editTask}>Edit</button>}
                     <button id="delete" onClick={deleteTask}>
                         <img src={trash} className="delete-task"/>
                     </button>
