@@ -11,7 +11,7 @@ function Dashboard(){
     const [refresh, setRefresh]=useState(false)
     const [update, setUpdate]=useState(null) //update state will store the task entry details which is drilled as props to showForm
     const [count, setCount]=useState(0) // to display number of tasks due in the current day
-    const [filter, setFilter]=useState("Pending")
+    const [filter, setFilter]=useState("All")
 
     function handleFilter(event){
         setFilter(event.target.value)
