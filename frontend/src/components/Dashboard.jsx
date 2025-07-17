@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import styles from "../styles/dashboard.module.css"
 import TaskEntry from "./TaskEntry"
 import Title from "./Title"
 import TaskForm from "./TaskForm"
@@ -19,7 +20,7 @@ function Dashboard(){
 
     async function fetchTasks(){ //function for useEffect
         try{
-            const response=await axios.get("https://flow-kn3b.onrender.com/api/tasks")
+            const response=await axios.get("http://localhost:5000/api/tasks/")
             let taskData=response.data
             setTasks(
                 taskData.filter((entry)=>{
@@ -58,35 +59,35 @@ function Dashboard(){
         <>
                 {showForm ? <TaskForm setShowForm={setShowForm} update={update} setUpdate={setUpdate}/> : null}
                 <Title />
-                <div className="dashboard-wrapper">
-                    <div className="dashboard">
-                        <div className="dashboard-main">
-                            <div className="dashboard-main-today-wrapper">
-                                <div className="dashboard-main-today-container">
-                                    <div className="dashboard-main-day">
+                <div className={styles["dashboard-wrapper"]}>
+                    <div className={styles["dashboard"]}>
+                        <div className={styles["dashboard-main"]}>
+                            <div className={styles["dashboard-main-today-wrapper"]}>
+                                <div className={styles["dashboard-main-today-container"]}>
+                                    <div className={styles["dashboard-main-day"]}>
                                         {date.toLocaleString('en-us', {weekday:'long'})}
                                     </div>
-                                    <div className="dashboard-main-date">
+                                    <div className={styles["dashboard-main-date"]}>
                                         {date.toLocaleString('en-IN', {month:'long'})} {""}
                                         {date.toLocaleString('en-IN', {day:'2-digit'})} {", "}
                                         {date.toLocaleString('en-IN', {year:'numeric'})}
                                     </div>
                                 </div>
-                                <div className="dashboard-main-day-icon">
+                                <div className={styles["dashboard-main-day-icon"]}>
                                     {emoji}
                                 </div>
                             </div>
-                            <div className="dashboard-main-options">
-                                <div className="dashboard-main-options-due">
+                            <div className={styles["dashboard-main-options"]}>
+                                <div className={styles["dashboard-main-options-due"]}>
                                     #{count} Tasks due today
                                 </div>
-                                <div className="dashboard-main-options-new">
-                                    <button id="new-task" onClick={()=>setShowForm(true)}>
+                                <div className={styles["dashboard-main-options-new"]}>
+                                    <button id={styles["new-task"]} onClick={()=>setShowForm(true)}>
                                         New +
                                     </button>
                                 </div>
-                                <div className="dashboard-main-options-filter">
-                                    <select id="filter-tasks" value={filter} onChange={handleFilter}> {/* Controlled Component. Here though it isn't necessary   */}
+                                <div className={styles["dashboard-main-options-filter"]}>
+                                    <select id={styles["filter-tasks"]} value={filter} onChange={handleFilter}> {/* Controlled Component. Here though it isn't necessary   */}
                                         <option value="All">All</option>
                                         <option value="Completed">Completed</option>
                                         <option value="Pending">Pending</option> {/* By default all pending tasks are displayed */}
@@ -94,7 +95,7 @@ function Dashboard(){
                                 </div>
                             </div>
                         </div>
-                        <div className="tasks-wrapper">
+                        <div className={styles["tasks-wrapper"]}>
                             {tasks}
                         </div>
                     </div>
