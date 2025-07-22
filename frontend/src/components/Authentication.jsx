@@ -1,7 +1,17 @@
+import styles from "../styles/authentication.module.css"
+
 function Authentication(){
     return (
         <>
-            <h1>Hello</h1>
+            <div className={styles["auth-container"]}>
+                <div className={styles["auth-child-greet"]}>
+                    <h1>Welcome to Flow!</h1>
+                    <p>Productivity meets style 😎</p>
+                </div>
+                <div className={styles["auth-child-login"]}>
+                    <h1>Sign In</h1>
+                </div>
+            </div>
         </>
     )
 }

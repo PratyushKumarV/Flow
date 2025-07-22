@@ -6,11 +6,11 @@
     font-family: "tomarik-display";
     src: url("../assets/fonts/tomarik-display.ttf");
 }
-  
-body{
-    margin:0;
+
+.body-wrapper{
     background-color: #E0EEC6;
     font-family: "tomarik-display";
+    height: 100%;
 }
 
 .title-wrapper{
@@ -41,7 +41,7 @@ body{
     height: 55.5vh;
     background-color: #b5e48c;
     border-radius: 1.5vh;
-    box-shadow: -4px 4px 0px #99d98c;;
+    box-shadow: -4px 4px 0px #99d98c;
     display: flex;
     flex-direction: column;
     justify-content:space-evenly;
