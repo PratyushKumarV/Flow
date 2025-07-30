@@ -3,7 +3,8 @@ const cors=require("cors")
 require("dotenv").config()
 
 const connectDB=require("./config/db")
-const blogRoute=require("./routes/tasks")  
+const taskRoute=require("./routes/tasks")  
+const userRoute=require("./routes/auth")
 
 const PORT=process.env.PORT
 const app=express()
@@ -14,7 +15,9 @@ app.use(cors({
     allowedHeaders: ["Content-Type"]
 }))
 
-app.use("/api/tasks", blogRoute)
+app.use("/api/tasks", taskRoute)
+app.use("/api/auth", userRoute)
+
 
 async function server(){
     await connectDB();

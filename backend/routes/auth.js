@@ -4,4 +4,6 @@ const authController=require("../controllers/authController")
 
 router.use(express.json())
 
-router.post('/register')
+router.post('/register', authController.registerUser)
+
+module.exports=router
