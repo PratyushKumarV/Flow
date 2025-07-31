@@ -30,4 +30,25 @@ async function registerUser(req, res){
     }
 }
 
-module.exports={registerUser}
+async function loginUser(req, res){
+    try{
+        const {username, password}=req.body
+        const checkUser=await User.findOne({userName: username})
+        if(checkUser){
+            const hashedPassword=checkUser.password
+            const isMatch=await bcrypt.compare(password, hashedPassword)
+            if (isMatch){
+                 //JWT generation logic
+                res.status(200).json({message: "Password is matched"})
+            }else{
+                res.status(401).json({message: "Invalid Password"})
+            }
+        }else{
+            res.status(404).json({message: "User does not exist"})
+        }
+    }catch(err){
+        res.status(500).json({message:"Internal Server Error"})
+    }
+}
+
+module.exports={registerUser, loginUser}
