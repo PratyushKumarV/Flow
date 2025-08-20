@@ -10,7 +10,7 @@ function TaskEntry(props){
 
     async function deleteTask(){
         try{
-            const response=await axios.delete(`http://https://flow-kn3b.onrender.com/api/tasks/${props._id}`)
+            const response=await axios.delete(`https://flow-kn3b.onrender.com/api/tasks/${props._id}`)
             console.log(response.data.message)
             setRefresh(!refresh)
         }catch(err){
@@ -20,7 +20,7 @@ function TaskEntry(props){
 
     async function updateStatus(status){
         try{
-            const response=await axios.patch(`http://https://flow-kn3b.onrender.com/api/tasks/query?id=${props._id}&status=${status}`)
+            const response=await axios.patch(`https://flow-kn3b.onrender.com/api/tasks/query?id=${props._id}&status=${status}`)
             console.log(response.data.message)
             setRefresh(!refresh)
         }catch(err){

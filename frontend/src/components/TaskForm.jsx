@@ -20,10 +20,10 @@ function TaskForm(props){
 
         try{
             if(!update){
-                const response=await axios.post("http://https://flow-kn3b.onrender.com/api/tasks", task)
+                const response=await axios.post("https://flow-kn3b.onrender.com/api/tasks", task)
                 console.log(response.data.message)
             }else{
-                const response=await axios.put(`http://https://flow-kn3b.onrender.com/api/tasks/${update._id}`, task)
+                const response=await axios.put(`https://flow-kn3b.onrender.com/api/tasks/${update._id}`, task)
                 console.log(response.data.message)
                 setUpdate(null)
             }
