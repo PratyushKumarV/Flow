@@ -10,7 +10,12 @@ function Authentication(){
                 </div>
                 <div className={styles["auth-child-login"]}>
                     <h1>Sign In</h1>
-                </div>
+                    <div className={styles["auth-login-form-container"]}>
+                        <div className={styles["auth-login-form"]}>
+                            <input/>
+                        </div>
+                    </div>
+                </div>  
             </div>
         </>
     )

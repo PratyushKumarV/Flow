@@ -11,22 +11,28 @@
     display: flex;
     height: 100%;
     width: 100%;
-    font-family: "tomarik-display";
 }
 
 .auth-child-greet{
-    flex: 1 1 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
     background-color: #b5e48c;
     box-sizing: border-box;
     min-width: 0;
     overflow-wrap: break-word;
+    font-family: "tomarik-display-line";
 }
 
 .auth-child-login{
-    flex: 1 1 0;
+    flex-grow: 1; /* Grow equally when there is extra space */
+    flex-shrink: 1; /* How items shrink when there is not enough space */
+    flex-basis: 0; /* Ignore the content's actualy width consider it as */
     background-color: #99d98c;
     box-sizing: border-box;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 h1{
@@ -39,4 +45,26 @@ h1{
     margin: 5vh;
     font-size: 1.8rem;
     font-family: "tomarik-display-line";
+}
+
+.auth-login-form-container{
+    display: flex;
+    flex-grow: 0.75;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-login-form{
+    background-color: #76c893;
+    border-radius: 1vh;
+    height: 40vh;
+    width: 40vw;
+    padding: 5vh;
+    display: flex;
+    flex-direction: column;
+}
+
+form{
+
 }
