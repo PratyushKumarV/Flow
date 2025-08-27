@@ -7,6 +7,11 @@ import axios from "axios"
 
 function Dashboard(){
 
+    const devUrl=import.meta.env.VITE_DEV_URL
+    const prodUrl=import.meta.env.VITE_PROD_URL
+
+    const apiUrl=import.meta.env.MODE==="development"?devUrl:prodUrl
+
     const [showForm, setShowForm]=useState(false)
     const [tasks, setTasks]=useState([])
     const [refresh, setRefresh]=useState(false)
@@ -20,7 +25,7 @@ function Dashboard(){
 
     async function fetchTasks(){ //function for useEffect
         try{
-            const response=await axios.get("https://flow-kn3b.onrender.com/api/tasks/")
+            const response=await axios.get(`${apiUrl}/api/tasks/`)
             let taskData=response.data
             setTasks(
                 taskData.filter((entry)=>{
