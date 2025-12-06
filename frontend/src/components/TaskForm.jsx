@@ -51,19 +51,19 @@ function TaskForm(props){
                     <form className={styles["task-form"]} action={submitTask}>
                         <div  className={styles["form-row"]}>
                             <label htmlFor="task">Task Name</label>
-                            <input id={styles["task"]} name="taskName" type="text" required defaultValue={update ? update.taskName : null}/>  
+                            <input id="task" name="taskName" type="text" required defaultValue={update ? update.taskName : null}/>  
                         </div>
                         <div className={styles["form-row"]}>
                             <label htmlFor="description">Task Description</label>
-                            <input id={styles["description"]} name="taskDescription" type="text" required defaultValue={update ? update.taskDescription : null}/>  
+                            <input id="description" name="taskDescription" type="text" required defaultValue={update ? update.taskDescription : null}/>  
                         </div>
                         <div className={styles["form-row"]}>
                             <label htmlFor="due-date">Due Date</label>
-                            <input id={styles["due-date"]} name="dueDate" type="date" required defaultValue={update ? new Date(update.dueDate).toISOString().split('T')[0]  : null} />
+                            <input id="due-date" name="dueDate" type="date" required defaultValue={update ? new Date(update.dueDate).toISOString().split('T')[0]  : null} />
                         </div>
                         <div className={styles["form-row"]}>
                             <label htmlFor="due-time">Due Time</label>
-                            <input id={styles["due-time"]} name="dueTime" type="time" required defaultValue={update ? update.dueTime : null}/>
+                            <input id="due-time" name="dueTime" type="time" required defaultValue={update ? update.dueTime : null}/>
                         </div>
                         <div className={styles["form-buttons"]}>
                             <button id={styles["cancel"]} onClick={()=>setShowForm(false)}>Cancel</button>

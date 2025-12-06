@@ -1,6 +1,7 @@
 import styles from "../styles/authentication.module.css"
 
-function Authentication(){
+function Authentication(props){ 
+    const title=props.title
     return (
         <>
             <div className={styles["auth-container"]}>
@@ -9,10 +10,10 @@ function Authentication(){
                     <p>Productivity meets style 😎</p>
                 </div>
                 <div className={styles["auth-child-login"]}>
-                    <h1>Sign In</h1>
+                    <h1>{title}</h1>
                     <div className={styles["auth-login-form-container"]}>
                         <div className={styles["auth-login-form"]}>
-                            <input/>
+                                {props.children}
                         </div>
                     </div>
                 </div>  

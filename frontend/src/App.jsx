@@ -1,5 +1,6 @@
 import Dashboard from './components/Dashboard'
-import Authentication from './components/Authentication'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import './App.css'
 
@@ -9,7 +10,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard />}/>
-        <Route path="/login" element={<Authentication/> }/>
+        <Route path="/login" element={<Login/> }/>
+        <Route path="/signup" element={<SignUp/>}/>
       </Routes>
     </BrowserRouter>
   )
