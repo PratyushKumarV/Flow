@@ -12,12 +12,11 @@ const app=express()
 app.use(cors({
     origin: ["http://localhost:5173","https://flow-three-black.vercel.app", "https://flow-pratyushkumarvs-projects.vercel.app/"],
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"]
+    allowedHeaders: ["Content-Type", "Authorization"]
 }))
 
 app.use("/api/tasks", taskRoute)
 app.use("/api/auth", userRoute)
-
 
 async function server(){
     await connectDB();

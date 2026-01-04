@@ -1,12 +1,7 @@
-import axios from "axios"
 import styles from "../styles/dashboard.module.css"
+import api from "../axiosSetup"
 
 function TaskForm(props){
-
-    const devUrl=import.meta.env.VITE_DEV_URL
-    const prodUrl=import.meta.env.VITE_PROD_URL
-
-    const apiUrl=import.meta.env.MODE==="development"?devUrl:prodUrl
 
     const {setShowForm, update, setUpdate}=props
 
@@ -25,10 +20,10 @@ function TaskForm(props){
 
         try{
             if(!update){
-                const response=await axios.post(`${apiUrl}/api/tasks`, task)
+                const response=await api.post(`/api/tasks`, task)
                 console.log(response.data.message)
             }else{
-                const response=await axios.put(`${apiUrl}/api/tasks/${update._id}`, task)
+                const response=await api.put(`/api/tasks/${update._id}`, task)
                 console.log(response.data.message)
                 setUpdate(null)
             }

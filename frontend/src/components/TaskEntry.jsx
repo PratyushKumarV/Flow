@@ -1,21 +1,16 @@
 import time from "../assets/images/time-968.png"
 import trash from "../assets/images/trash-can.png"
-import axios from "axios"
 import styles from "../styles/dashboard.module.css"
+import api from "../axiosSetup"
 
 function TaskEntry(props){
-
-    const devUrl=import.meta.env.VITE_DEV_URL
-    const prodUrl=import.meta.env.VITE_PROD_URL
-
-    const apiUrl=import.meta.env.MODE==="development"?devUrl:prodUrl
     
     const dueDate=new Date(props.dueDate)
     const {refresh, setRefresh, setUpdate, setShowForm}=props
 
     async function deleteTask(){
         try{
-            const response=await axios.delete(`${apiUrl}/api/tasks/${props._id}`)
+            const response=await api.delete(`/api/tasks/${props._id}`)
             console.log(response.data.message)
             setRefresh(!refresh)
         }catch(err){
@@ -25,7 +20,7 @@ function TaskEntry(props){
 
     async function updateStatus(status){
         try{
-            const response=await axios.patch(`${apiUrl}/api/tasks/query?id=${props._id}&status=${status}`)
+            const response=await api.patch(`/api/tasks/query?id=${props._id}&status=${status}`)
             console.log(response.data.message)
             setRefresh(!refresh)
         }catch(err){

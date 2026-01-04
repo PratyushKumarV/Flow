@@ -81,12 +81,20 @@ form{
     font-family: 'tomarik-display';
 }
 
+.form-row > p{
+    color: #cc0000;
+}
+
+.form-row > p:hover{
+    text-decoration: underline;
+}
+
 .form-row > label{
     font-size: 2.5vh;
     background-color: #52B69A;
     border-radius: 1vh;
     padding: 2vh 4vh;
-    width: 32%
+    width: auto
 }
 
 .form-row > input{

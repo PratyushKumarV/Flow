@@ -7,25 +7,53 @@
     src: url("../assets/fonts/tomarik-display.ttf");
 }
 
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
 .body-wrapper{
     background-color: #E0EEC6;
     font-family: "tomarik-display";
     height: 100%;
 }
 
-.title-wrapper{
-    height:25vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header{
+    display: grid;
+    height: 25vh;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center; /* vertically centers everything */
+    width: 100%;
+    padding: 12px 16px;
 }
 
-.title{
+.center{
     background-color: #b5e48c;
-    font-size: 100px;
     border-radius: 1.5vh;
     box-shadow: -4px 4px 0px #99d98c;
+    justify-self: center;
     font-family: "tomarik-display-line";
+    font-size: 100px;
+}
+
+.logout{
+    justify-self: end;
+    margin-right: 5vw;
+    background-color: #b5e48c;
+    box-shadow: -4px 4px 0px #99d98c;
+    border:0;
+    font-size: 20px;
+    font-family: "tomarik-display";
+    padding: 0.5vh 1vh;
+    border-radius: 0.8vh;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logout:hover{
+    transform: scale(1.2);
 }
   
 .dashboard-wrapper{
@@ -57,6 +85,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1vh;
 }
 
 .dashboard-main-today-wrapper{

@@ -3,14 +3,9 @@ import styles from "../styles/dashboard.module.css"
 import TaskEntry from "./TaskEntry"
 import Title from "./Title"
 import TaskForm from "./TaskForm"
-import axios from "axios"
+import api from "../axiosSetup"
 
 function Dashboard(){
-
-    const devUrl=import.meta.env.VITE_DEV_URL
-    const prodUrl=import.meta.env.VITE_PROD_URL
-
-    const apiUrl=import.meta.env.MODE==="development"?devUrl:prodUrl
 
     const [showForm, setShowForm]=useState(false)
     const [tasks, setTasks]=useState([])
@@ -25,7 +20,7 @@ function Dashboard(){
 
     async function fetchTasks(){ //function for useEffect
         try{
-            const response=await axios.get(`${apiUrl}/api/tasks/`)
+            const response=await api.get(`/api/tasks/`)
             let taskData=response.data
             setTasks(
                 taskData.filter((entry)=>{

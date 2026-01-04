@@ -1,13 +1,13 @@
 const User=require("../models/user")
 const bcrypt=require("bcrypt")
+const jwt=require("jsonwebtoken")
 
 async function registerUser(req, res){
     try{
         const {username, password}=req.body
         const duplicateUsername=await User.findOne({userName: username})
         if(duplicateUsername){
-            res.status(409).json({message:"Username already exists"})
-            return
+            return res.status(409).json({message:"Username already exists"})
         }else{
             const saltRounds=10 // specifies that hashing must be performed 2^10 times
 
@@ -22,11 +22,12 @@ async function registerUser(req, res){
                 password: hashedPassword
             })
             await newUser.save()
-            res.status(200).json({message: "User created successfully"})
 
+            const token = jwt.sign({userId: newUser._id}, process.env.JWT_SECRET, {expiresIn: '1h'})
+            return res.status(200).json({message: "User created successfully", token:token})
         }   
     }catch(err){
-        res.status(500).json({message:"Internal Server Error"})
+        return res.status(500).json({message:"Internal Server Error"})
     }
 }
 
@@ -39,15 +40,17 @@ async function loginUser(req, res){
             const isMatch=await bcrypt.compare(password, hashedPassword)
             if (isMatch){
                  //JWT generation logic
-                res.status(200).json({message: "Password is matched"})
+                const token = jwt.sign({userId: checkUser._id}, process.env.JWT_SECRET, {expiresIn: '1h'})
+                return res.status(200).json({message: "Password is matched", token: token})
             }else{
-                res.status(401).json({message: "Invalid Password"})
+                return res.status(401).json({message: "Incorrect Password"})
             }
         }else{
-            res.status(404).json({message: "User does not exist"})
+            return res.status(404).json({message: "User does not exist"})
         }
     }catch(err){
-        res.status(500).json({message:"Internal Server Error"})
+        console.log(err)
+        return res.status(500).json({message:"Internal Server Error"})
     }
 }
 

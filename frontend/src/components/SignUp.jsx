@@ -1,29 +1,30 @@
-import axios from "axios";
+import api from "../axiosSetup"
 import Authentication from "./Authentication";
 import styles from "../styles/authentication.module.css"
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function SignUp(){
+    const navigate=useNavigate()
 
-    const devUrl=import.meta.env.VITE_DEV_URL
-    const prodUrl=import.meta.env.VITE_PROD_URL
-
-    const apiUrl=import.meta.env.MODE==="development"?devUrl:prodUrl
+    const [error, setError]=useState(null)
 
     async function register(formData){
-        const username=formData.userName
-        const password=formData.password
+        const username=formData.get("userName")
+        const password=formData.get("password")
         const user={
             "username": username,
             "password": password
         }
 
         try{
-            const response=await axios.post(`${apiUrl}/api/auth/register`, user)
-            console.log(response.data.message)
+            const response=await api.post(`/api/auth/register`, user)
+            localStorage.setItem("token", response.data.token)
+            localStorage.removeItem("sessionExpired")
+            navigate("/dashboard")
         }catch(err){
-            throw new Error(err.message)
+            setError(true)
         }
-
     }
 
     return (
@@ -38,6 +39,12 @@ function SignUp(){
                         <label htmlFor="password">Password</label>
                         <input id="password" type="password" name="password" required/>
                     </div>
+                    {
+                        error==true?
+                        <div className={styles["form-row"]}>
+                            <p>Username already exists</p>
+                        </div>:null
+                    }
                     <div className={styles["form-buttons"]}>
                         <button type="submit">Submit</button>
                     </div>
