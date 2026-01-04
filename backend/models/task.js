@@ -7,7 +7,7 @@ const taskSchema=mongoose.Schema({
     dueDate: {type: Date, required: true},
     dueTime: {type: String, required: true},
     status: {type: String, required: true},
-    userId: {type: Schema.Types.ObjectId, ref:"User", required: true}
+    userId: {type: Schema.Types.ObjectId, ref:"users", required: true}
 },{
     collection: "tasks"
 })
