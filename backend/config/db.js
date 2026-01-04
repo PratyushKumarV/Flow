@@ -5,7 +5,7 @@ const connectionStringDev=process.env.MONGODB_URI_DEV // temp connection string 
 
 async function connectDB(){
     try{
-        await mongoose.connect(connectionStringDev)
+        await mongoose.connect(connectionString)
         console.log("Successfully connected to MongoDB")
     }catch(err){
         throw new Error(err.message)
